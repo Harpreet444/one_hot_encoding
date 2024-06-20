@@ -16,9 +16,12 @@ At the same level as this notebook on github, there is an Exercise folder that c
 
 3) Tell me the score (accuracy) of your model. (Hint: use LinearRegression().score())''')
 
-st.image("Default_create_a_best_image_for_my_desktop_wallpaper_use_any_i_0.jpg")
+col1, col2, col3 = st.columns([1,3,1])
+col2.image("D:Default_create_a_best_image_for_my_desktop_wallpaper_use_any_i_0.jpg")
 
-df = pd.read_csv("carprices.csv")
+
+
+df = pd.read_csv("carprices.csv",)
 
 st.subheader("Dataset")
 st.table(df)
@@ -29,7 +32,8 @@ ax.scatter(df['Mileage'], df['Sell Price($)'], color='g', label="Scatter plot",m
 ax.set_xlabel('Mileage')
 ax.set_ylabel('Sell Price($)')
 ax.set_xlabel('Mileage')
-st.pyplot(fig)
+co1, co2, co3 = st.columns([1,3,1])
+co2.pyplot(fig)
 
 
 st.write("Perfoming one hot encoding and updating dataframe")
