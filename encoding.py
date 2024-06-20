@@ -17,7 +17,7 @@ At the same level as this notebook on github, there is an Exercise folder that c
 3) Tell me the score (accuracy) of your model. (Hint: use LinearRegression().score())''')
 
 col1, col2, col3 = st.columns([1,3,1])
-col2.image("D:Default_create_a_best_image_for_my_desktop_wallpaper_use_any_i_0.jpg")
+col2.image("Default_create_a_best_image_for_my_desktop_wallpaper_use_any_i_0.jpg")
 
 
 
