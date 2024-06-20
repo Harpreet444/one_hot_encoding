@@ -6,8 +6,10 @@ import joblib
 
 st.set_page_config(page_title='Dummy variable and one hot encoding',page_icon='logo.png',layout='wide')
 
-st.title("One Hot Encoding")
-st.write('''Exercise:
+co1, co2, co3 = st.columns([1,3,1])
+
+co2.title("One Hot Encoding")
+co2.write('''Exercise:
 At the same level as this notebook on github, there is an Exercise folder that contains carprices.csv. This file has car sell prices for 3 different models. First plot data points on a scatter plot chart to see if linear regression model can be applied. If yes, then build a model that can answer following questions,
 
 1) Predict price of a mercedez benz that is 4 yr old with mileage 45000
@@ -16,28 +18,28 @@ At the same level as this notebook on github, there is an Exercise folder that c
 
 3) Tell me the score (accuracy) of your model. (Hint: use LinearRegression().score())''')
 
-col1, col2, col3 = st.columns([1,3,1])
-col2.image("Default_create_a_best_image_for_my_desktop_wallpaper_use_any_i_0.jpg")
+
+co2.image("Default_create_a_best_image_for_my_desktop_wallpaper_use_any_i_0.jpg")
 
 
 
 df = pd.read_csv("carprices.csv",)
 
-st.subheader("Dataset")
-st.table(df)
+co2.subheader("Dataset")
+co2.table(df)
 
-st.subheader("Scatter Plot")
+co2.subheader("Scatter Plot")
 fig, ax = plt.subplots()
 ax.scatter(df['Mileage'], df['Sell Price($)'], color='g', label="Scatter plot",marker = '+')  # Experience vs. Salary
 ax.set_xlabel('Mileage')
 ax.set_ylabel('Sell Price($)')
 ax.set_xlabel('Mileage')
-co1, co2, co3 = st.columns([1,3,1])
+
 co2.pyplot(fig)
 
 
-st.write("Perfoming one hot encoding and updating dataframe")
-st.code('''
+co2.write("Perfoming one hot encoding and updating dataframe")
+co2.code('''
 from sklearn.preprocessing import OneHotEncoder
 oh = OneHotEncoder(drop = 'first', handle_unknown='error',sparse_output=False)
 data = ohe.transform(df[['Car Model']])
@@ -50,7 +52,7 @@ data = pd.DataFrame(data,columns=['col1','col2'])
 
 df = df.drop('Car Model',axis='columns')
 df = pd.concat([data,df],axis='columns')
-st.table(df)
+co2.table(df)
 
 reg = joblib.load("reg.joblib")
 
@@ -60,27 +62,27 @@ def format(str,mil,age):
     data = pd.DataFrame([[mil,age]],columns=['Mileage','Age(yrs)'])
     return pd.concat([str,data],axis='columns')
 
-st.subheader("Solutions:")
-st.write("1) Predict price of a mercedez benz that is 4 yr old with mileage 45000")
-st.write(reg.predict(format('Mercedez Benz C class',45000,4)))
+co2.subheader("Solutions:")
+co2.write("1) Predict price of a mercedez benz that is 4 yr old with mileage 45000")
+co2.write(reg.predict(format('Mercedez Benz C class',45000,4)))
 
-st.write("2) Predict price of a BMW X5 that is 7 yr old with mileage 86000")
-st.write(reg.predict(format('BMW X5',86000,7)))
+co2.write("2) Predict price of a BMW X5 that is 7 yr old with mileage 86000")
+co2.write(reg.predict(format('BMW X5',86000,7)))
 
-st.write("3) Tell me the score (accuracy) of your model. (Hint: use LinearRegression().score())")
-st.write(reg.score(df[['col1','col2','Mileage','Age(yrs)']],df[['Sell Price($)']]),'in-sample evaluation')
+co2.write("3) Tell me the score (accuracy) of your model. (Hint: use LinearRegression().score())")
+co2.write(reg.score(df[['col1','col2','Mileage','Age(yrs)']],df[['Sell Price($)']]))
 
-st.subheader("Predictions")
+co2.subheader("Predictions")
 op = ['BMW X5','Audi A5','Mercedez Benz C class']
-car = st.radio(label="Car Model",options=op)
-mil = st.number_input(label='Mileage',step=1)
-age = st.number_input(label='Age(yrs)',step=1)
+car = co2.radio(label="Car Model",options=op)
+mil = co2.number_input(label='Mileage',step=1)
+age = co2.number_input(label='Age(yrs)',step=1)
 
-btn = st.button(label="Predict")
+btn = co2.button(label="Predict")
 
 if btn:
     if car == '' or car not in op:
-        st.warning('Enter a valid car model')
+        co2.warning('Enter a valid car model')
 
     else:    
-        st.write(reg.predict(format(car,mil,age)))
+        co2.write(reg.predict(format(car,mil,age)))
