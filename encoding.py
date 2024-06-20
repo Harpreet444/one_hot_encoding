@@ -19,8 +19,17 @@ At the same level as this notebook on github, there is an Exercise folder that c
 st.image("Default_create_a_best_image_for_my_desktop_wallpaper_use_any_i_0.jpg")
 
 df = pd.read_csv("carprices.csv")
-st.subheader("Data Set")
+
+st.subheader("Dataset")
 st.table(df)
+
+st.subheader("Scatter Plot")
+fig, ax = plt.subplots()
+ax.scatter(df['Mileage'], df['Sell Price($)'], color='g', label="Scatter plot",marker = '+')  # Experience vs. Salary
+ax.set_xlabel('Mileage')
+ax.set_ylabel('Sell Price($)')
+ax.set_xlabel('Mileage')
+st.pyplot(fig)
 
 
 st.write("Perfoming one hot encoding and updating dataframe")
