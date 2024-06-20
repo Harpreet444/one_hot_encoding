@@ -4,7 +4,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 import joblib
 
-st.set_page_config(page_title='Dummy variable and one hot encoding',page_icon='D:\Machine_learning\one_hot_encoding\logo.png')
+st.set_page_config(page_title='Dummy variable and one hot encoding',page_icon='logo.png')
 
 st.title("One Hot Encoding")
 st.write('''Exercise:
@@ -16,9 +16,9 @@ At the same level as this notebook on github, there is an Exercise folder that c
 
 3) Tell me the score (accuracy) of your model. (Hint: use LinearRegression().score())''')
 
-st.image("D:\Machine_learning\one_hot_encoding\Default_create_a_best_image_for_my_desktop_wallpaper_use_any_i_0.jpg")
+st.image("Default_create_a_best_image_for_my_desktop_wallpaper_use_any_i_0.jpg")
 
-df = pd.read_csv("D:\Machine_learning\one_hot_encoding\carprices.csv")
+df = pd.read_csv("carprices.csv")
 st.subheader("Data Set")
 st.table(df)
 
@@ -31,7 +31,7 @@ data = ohe.transform(df[['Car Model']])
 data = pd.DataFrame(data)
 pd.concat([df,data],axis='columns')''')
 
-ohe = joblib.load("D:\\Machine_learning\\one_hot_encoding\\onhot_encoder.joblib")
+ohe = joblib.load("onhot_encoder.joblib")
 data = ohe.transform(df[['Car Model']])
 data = pd.DataFrame(data,columns=['col1','col2'])
 
@@ -39,7 +39,7 @@ df = df.drop('Car Model',axis='columns')
 df = pd.concat([data,df],axis='columns')
 st.table(df)
 
-reg = joblib.load("D:\\Machine_learning\\one_hot_encoding\\reg.joblib")
+reg = joblib.load("reg.joblib")
 
 def format(str,mil,age):
     str = pd.DataFrame(ohe.transform([[str]]),columns=['col1','col2'])
