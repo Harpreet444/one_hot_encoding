@@ -4,7 +4,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 import joblib
 
-st.set_page_config(page_title='Dummy variable and one hot encoding',page_icon='logo.png',layout='centered')
+st.set_page_config(page_title='Dummy variable and one hot encoding',page_icon='logo.png',layout='wide')
 
 co1, co2, co3 = st.columns([1,3,1])
 
