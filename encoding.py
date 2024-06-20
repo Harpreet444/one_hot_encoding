@@ -4,7 +4,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 import joblib
 
-st.set_page_config(page_title='Dummy variable and one hot encoding',page_icon='logo.png')
+st.set_page_config(page_title='Dummy variable and one hot encoding',page_icon='logo.png',layout='wide')
 
 st.title("One Hot Encoding")
 st.write('''Exercise:
